@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CQRS.Models.ListOfSchool>
+
+@{
+    ViewData["Title"] = "Schools in The Gambia";
+}
+
+<h1>Schools in The Gambia</h1>
+
+<p>
+    <a asp-controller="Schools" asp-action="Create"  class="btn btn-success">Create New</a>
+</p>
+@*<div class="row">
+    <div class="col">
+        <h1>Players</h1>
+    </div>
+    <div class="col text-right">
+        <a asp-controller="Schools" asp-action="Create" class="btn btn-success">Create New</a>
+    </div>
+</div>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SchooName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchooNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchooName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchooNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
