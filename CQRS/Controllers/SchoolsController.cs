@@ -40,7 +40,7 @@ namespace CQRS.Controllers
                 if (ModelState.IsValid)
                 {
                     await _mediator.Send(command);
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception ex)
